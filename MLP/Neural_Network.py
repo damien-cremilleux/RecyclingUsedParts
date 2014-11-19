@@ -2,6 +2,7 @@
 
 import random
 import math
+import pickle
 
 """
 Neural_Netwotk.py
@@ -106,7 +107,6 @@ class MLP:
         output_layer = []
         for ii in range(0, nb_output_nodes):
             output_layer.append(Neuron())
-        output_layer[0].set_bias()
         self.neurons.append(output_layer)
 
         self.weight = []        # Matrice with the weight, some values will be irrelevant (eg weight[1][1])
@@ -230,3 +230,11 @@ class MLP:
         self.propagate_inputs(l_input)
         self.propagate_outputs(l_output)
         return self.errors(l_output)
+
+    def save_MLP(self, f_output):
+        '''Save the MLP into a file'''
+        pickle.dump(self, open(f_output, "wb"))
+
+    def open_MLP(self,f_input):
+        '''Return the MLP saved in the file'''
+        self = pickle.load(open(f_input,"rb"))
