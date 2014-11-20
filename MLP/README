@@ -1,0 +1,16 @@
+How to train the MLP
+--------------------
+Use: python trainMLP.py train_data.csv
+
+The training can take several minutes, be patient!
+Five files will be created: MLP_0, MLP_10, MLP_100, MP_1000 and MLP_10000. They are the MLP at a given epoch.
+
+
+How to execute the classification
+----------------------------------
+Use: python executeMLP.py MLP_EPOCH test_data.csv
+
+
+Data files
+----------
+The data files must be in a csv format, without empty lines at the end (if there are some empty lines, the training script will crash).
