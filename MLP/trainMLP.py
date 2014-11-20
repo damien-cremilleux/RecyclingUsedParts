@@ -42,8 +42,8 @@ if __name__ == "__main__":
         
     # Create and train the MLP
     mlp = NN.MLP(2,5,4)
-    for ii in range(0, nb_epoch):
-        sum_errors =0 
+    for ii in range(0, nb_epoch+1):
+        sum_errors = 0 
         for lp in data:
             # Generate inputs
             l_input = []
@@ -61,24 +61,26 @@ if __name__ == "__main__":
             if lp[len(lp)-1] == '4':
                 l_output = [0, 0, 0, 1]
          
-            e  = mlp.train_MLP(l_input, l_output)
-            sum_errors = sum_errors + e
+            er  = mlp.train_MLP(l_input, l_output)
+            sum_errors = sum_errors + er
 
         errors.append(sum_errors)
             
         # Save the MLP at given epoch
-        mlp.inc_epoch()
         e = mlp.get_epoch()
+        
+        if e == 0:
+            mlp.save_MLP("MLP_0")
         if e == 10:
             mlp.save_MLP("MLP_10")
         if e == 100:
             mlp.save_MLP("MLP_100")
         if e == 1000:
-            mlp.save_MLP("MLP_100")
-        if e == 1000:
             mlp.save_MLP("MLP_1000")
         if e == 10000:
             mlp.save_MLP("MLP_10000")
+
+        mlp.inc_epoch()
 
     # Plot the errors
     plot_errors(errors) 
