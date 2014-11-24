@@ -1,0 +1,18 @@
+How to train the Decision Tree Ensemble (Random Forest)
+--------------------
+Use: python trainDT.py train_data.csv
+
+If train_data.csv is in another directory, change the name to match it.
+
+The training can take several minutes, be patient!
+Five files will be created: dt1.p, dt10.p, dt100.p, dt200.p. They represent the random forest for each forest size.
+
+
+How to execute the classification
+----------------------------------
+Use: python executeMLP.py <forestFile> test_data.csv
+
+
+Data files
+----------
+The data files must be in a csv format without empty lines at the end (if there are some empty lines, the training script will crash).
